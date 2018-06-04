@@ -1,0 +1,5 @@
+runtime: python35
+
+handlers:
+- url: /.*
+  script: web.app.app
