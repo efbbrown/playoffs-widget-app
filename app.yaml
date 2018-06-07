@@ -1,5 +1,11 @@
 runtime: python27
+api_version: 1
+threadsafe: true
+
+libraries:
+- name: ssl
+  version: 2.7.11
 
 handlers:
 - url: /.*
-  script: web.app.app
+  script: app.app
