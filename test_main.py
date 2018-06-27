@@ -13,13 +13,13 @@
 # limitations under the License.
 
 
-import main
+import app
 import unittest
 
 class MainTest(unittest.TestCase):
     
     def setUp(self):
-        self.app = main.app.test_client()
+        self.app = app.app.test_client()
 
     def test_hello_world(self):
         assert "Hey" == "Hey"
