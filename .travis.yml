@@ -20,9 +20,12 @@ before_install:
 - if [ ! -d ${HOME}/google-cloud-sdk ]; then
      curl https://sdk.cloud.google.com | bash;
   fi
+- if [ ! -d ${HOME}/google-cloud-sdk/bin ]; then
+     rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash;
+  fi
+- source ${HOME}/google-cloud-sdk/path.bash.inc
 - tar -xzf credentials.tar.gz
 - mkdir -p lib
-- source ${HOME}/google-cloud-sdk/path.bash.inc
 # Here we use the decrypted service account credentials to authenticate the command line tool
 - gcloud auth activate-service-account --key-file client-secret.json
 # [END auth]
