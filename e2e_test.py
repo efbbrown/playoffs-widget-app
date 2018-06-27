@@ -15,7 +15,7 @@ HOST='http://nba-score-widget.appspot.com'
 
 # [START e2e]
 # response = urllib2.urlopen("{}/get_author/ulysses".format(HOST))
-response = urllib2.urlopen("{}/api-playoff-bracket/".format(HOST))
+response = urllib2.urlopen("{}/api/playoff-bracket/".format(HOST))
 html = response.read()
-assert(html == "James Joyce")
+assert(html[:9] == '{\n  "pb":')
 # [END e2e]

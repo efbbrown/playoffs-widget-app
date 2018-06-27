@@ -31,7 +31,8 @@ else:
 # Configure the app
 configure_app(app, run_mode)
 
-requests_toolbelt.adapters.appengine.monkeypatch()
+if run_mode == "prod":
+    requests_toolbelt.adapters.appengine.monkeypatch()
 
 #####################################################
 #           Views                                   #
@@ -46,7 +47,7 @@ def playoffs_widget():
     return render_template("index.html")
 
 
-@app.route("/api-playoff-bracket/")
+@app.route("/api/playoff-bracket/")
 def api_playoff_bracket():
     logging.info("Getting playoff bracket")
     r = requests.get("https://data.nba.com/data/v2015/json/mobile_teams/nba/2017/scores/00_playoff_bracket.json")
@@ -54,7 +55,7 @@ def api_playoff_bracket():
     return jsonify(r.json())
 
 
-@app.route("/api-gamedetail/")
+@app.route("/api/gamedetail/")
 def api_gamedetail():
     gid = request.args.get("gid")
     end_point = "https://data.nba.com/data/v2015/json/mobile_teams/nba/2017/scores/gamedetail/{0}_gamedetail.json".format(gid)
