@@ -35,6 +35,7 @@ install:
 - gcloud -q components update gae-python
 # Install the Python dependencies
 - pip install -r requirements.txt -t lib/
+- export PATH=$PATH:./lib
 script:
 # Run the unit tests
 - python test_main.py
