@@ -8,7 +8,7 @@ jQuery(document).ready(function() {
   var round;
   var standings = '';
   // jQuery.getJSON("https://data.nba.com/data/v2015/json/mobile_teams/nba/2017/scores/00_playoff_bracket.json", function(data) {
-  jQuery.getJSON("/api-playoff-bracket/", function(data) {
+  jQuery.getJSON("/api/playoff-bracket/", function(data) {
 
     if (data.pb.r.length === 1) {
       round = data.pb.r[0].d;
@@ -64,7 +64,7 @@ jQuery(document).ready(function() {
 
   function getGameIds() {
     return new Promise(function(resolve, reject) {
-      jQuery.getJSON("/api-playoff-bracket/", function(data) {
+      jQuery.getJSON("/api/playoff-bracket/", function(data) {
 
         var rArray = data.pb.r;
 
@@ -106,7 +106,7 @@ jQuery(document).ready(function() {
     jQuery.ajaxSetup({ cache: false });
 
     function gameDetailURL(id) {
-      return "/api-gamedetail?gid=" + id;
+      return "/api/gamedetail?gid=" + id;
       // return "https://data.nba.com/data/v2015/json/mobile_teams/nba/2017/scores/gamedetail/" + id + "_gamedetail.json"
     }
 
