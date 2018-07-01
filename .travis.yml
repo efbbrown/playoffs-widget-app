@@ -41,7 +41,7 @@ script:
 - python test_main.py
 # [START deploy]
 # Deploy the app
-- gcloud -q app deploy app.yaml --promote
+- gcloud -q app deploy app.yaml --verbosity=info --promote
 # Run and end to end test
 - python e2e_test.py
 # [END deploy]
